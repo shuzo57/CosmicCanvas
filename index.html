@@ -3,26 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cosmic Canvas</title>
+  <title>ScrollStory - ポートフォリオタイムライン</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-  <!-- Custom CSS -->
+  <!-- カスタムCSS -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- particles.js ライブラリ -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 </head>
 <body>
-  <!-- パーティクル背景用コンテナ -->
-  <div id="particles-js"></div>
+  <!-- ヘッダー -->
+  <header class="header">
+    <h1>ScrollStory</h1>
+    <p>私の歩んできたストーリー</p>
+  </header>
   
-  <!-- コンテンツ領域（パーティクルの上に表示） -->
-  <div class="content">
-    <h1>Cosmic Canvas</h1>
-    <p>美しく動くパーティクル背景で、静的サイトにも動的な魅力をプラス。</p>
-    <button id="actionBtn">エクスペリエンス開始</button>
-  </div>
+  <!-- タイムラインコンテンツ -->
+  <main>
+    <section class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h2>2000年 - 出生</h2>
+          <p>ここに簡単な説明文が入ります。生い立ちや背景などを記載。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h2>2018年 - 大学入学</h2>
+          <p>学びや新たな挑戦の始まり。経験やエピソードを紹介。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h2>2022年 - 初仕事</h2>
+          <p>初めての社会経験と挑戦。成功や失敗のエピソードを共有。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h2>2025年 - 現在</h2>
+          <p>現在の活動内容や未来へのビジョンを語るセクション。</p>
+        </div>
+      </div>
+    </section>
+  </main>
   
   <!-- カスタムJS -->
-  <script src="js/app.js"></script>
+  <script src="js/timeline.js"></script>
 </body>
 </html>

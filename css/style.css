@@ -5,61 +5,103 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
+  }
+  
+  body {
     font-family: 'Roboto', sans-serif;
-    color: #fff;
-    overflow: hidden;
-}
-
-/* パーティクル背景 */
-#particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* グラデーション背景（パーティクルが浮かぶ宇宙空間のイメージ） */
-    background: linear-gradient(135deg, #1d2b64, #f8cdda);
-    z-index: -1;
-}
-
-/* コンテンツエリア */
-.content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    background: #f4f4f4;
+    color: #333;
+  }
+  
+  /* ヘッダー */
+  .header {
     text-align: center;
-    padding: 20px;
-}
-
-.content h1 {
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+  }
+  .header h1 {
     font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.content p {
+    margin-bottom: 0.5rem;
+  }
+  .header p {
     font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.content button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #1d2b64;
+  }
+  
+  /* タイムライン */
+  .timeline {
+    width: 90%;
+    max-width: 800px;
+    margin: 3rem auto;
+    position: relative;
+    padding: 2rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: #ddd;
+  }
+  
+  /* タイムラインアイテム */
+  .timeline-item {
+    position: relative;
+    width: 45%;
+    padding: 1rem 2rem;
     background: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.content button:hover {
-    transform: scale(1.1);
-}
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out;
+  }
+  
+  /* アイテムが表示された時のアニメーション */
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* 左右に交互に配置 */
+  .timeline-item:nth-child(odd) {
+    left: 0;
+  }
+  .timeline-item:nth-child(even) {
+    left: 55%;
+  }
+  
+  /* タイムライン上のマーカー */
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border: 4px solid #667eea;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .timeline-item:nth-child(odd)::after {
+    right: -6px;
+  }
+  .timeline-item:nth-child(even)::after {
+    left: -6px;
+  }
+  
+  /* タイムラインの内容 */
+  .timeline-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #667eea;
+  }
+  .timeline-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
