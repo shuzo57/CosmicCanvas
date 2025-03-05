@@ -1,5 +1,3 @@
-// timeline.js
-
 document.addEventListener('DOMContentLoaded', function () {
     // タイムラインの全アイテムを取得
     const items = document.querySelectorAll('.timeline-item');
