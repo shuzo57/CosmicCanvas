@@ -1,0 +1,65 @@
+/* style.css */
+
+/* リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* パーティクル背景 */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* グラデーション背景（パーティクルが浮かぶ宇宙空間のイメージ） */
+    background: linear-gradient(135deg, #1d2b64, #f8cdda);
+    z-index: -1;
+}
+
+/* コンテンツエリア */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.content button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1d2b64;
+    background: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.content button:hover {
+    transform: scale(1.1);
+}
