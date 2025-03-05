@@ -7,135 +7,149 @@
   box-sizing: border-box;
 }
 
+/* ベース設定 */
+html,
 body {
+  width: 100%;
+  height: 100%;
   font-family: 'Roboto', sans-serif;
-  background: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* 背景を全画面に敷き、z-index 調整 */
+#vanta-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* 背景を背面に配置 */
 }
 
 /* ヘッダー */
 .header {
   text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: #fff;
+  padding: 3rem 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
 }
 
 .header h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
 }
 
 .header p {
   font-size: 1.2rem;
 }
 
-/* タイムライン全体 */
-.timeline {
+/* タイムラインコンテナ */
+.dial-timeline {
   width: 90%;
-  max-width: 800px;
+  max-width: 900px;
   margin: 3rem auto;
   position: relative;
   padding: 2rem 0;
 }
 
-/* タイムライン中央の縦線 */
-.timeline::before {
+/* タイムラインの縦線 */
+.dial-timeline::before {
   content: '';
   position: absolute;
-  left: 50%;
+  left: 50px;
   top: 0;
-  transform: translateX(-50%);
   width: 4px;
   height: 100%;
-  background: #ddd;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-/* タイムラインアイテム共通 */
-.timeline-item {
+/* タイムライン項目 */
+.dial-item {
+  display: flex;
+  align-items: center;
   position: relative;
-  width: 45%;
-  margin: 2rem 0;
-  padding: 1.5rem 2rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
 
-  /* 初期アニメーション状態 */
+  /* アニメーション前の初期状態 */
   opacity: 0;
-  transition: all 0.6s ease-out;
-}
-
-/* 画像とコンテンツ */
-.timeline-image {
-  margin-bottom: 1rem;
-}
-
-.timeline-image img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-}
-
-.timeline-content h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  color: #667eea;
-}
-
-.timeline-content p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* odd/evenアイテムの位置とスライド方向 */
-.timeline-item:nth-child(odd) {
-  left: 0;
-  transform: translateX(-50px);
-  /* 左からスライド */
-}
-
-.timeline-item:nth-child(even) {
-  left: 55%;
-  transform: translateX(50px);
-  /* 右からスライド */
-}
-
-/* タイムラインアイテムの丸マーカー */
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  top: 40px;
-  /* 画像を考慮して少し下げる */
-  width: 14px;
-  height: 14px;
-  background: #fff;
-  border: 4px solid #667eea;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.timeline-item:nth-child(odd)::after {
-  right: -8px;
-}
-
-.timeline-item:nth-child(even)::after {
-  left: -8px;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* 表示判定後に適用されるクラス */
-.timeline-item.visible {
+.dial-item.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
+}
+
+/* 丸い画像（ダイヤル） */
+.dial-circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  min-width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  margin-right: 2rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  /* 回転アニメーション用の初期設定 */
+  transform: rotate(0deg);
+  transition: transform 1s ease-in-out;
+}
+
+/* 回転クラスが付与された時 */
+.dial-circle.spin {
+  transform: rotate(360deg);
+}
+
+/* 画像を円形にフィット */
+.dial-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 右側のコンテンツ（グラスモーフィズム＋ダーク） */
+.dial-content {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dial-content h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.dial-content p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+/* ホバー時の立体感 */
+.dial-content:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
 }
 
 /* フッター */
 .footer {
   text-align: center;
-  padding: 1rem;
-  background: #fff;
-  color: #999;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
   margin-top: 3rem;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }

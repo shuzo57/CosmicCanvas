@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ScrollStory - 横からスライドするタイムライン</title>
+  <title>Dial Timeline</title>
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
@@ -11,104 +11,114 @@
   />
   <!-- カスタムCSS -->
   <link rel="stylesheet" href="css/style.css" />
+  <!-- Vanta.js と Three.js のCDN (背景用) -->
+  <!-- 公式: https://github.com/tengbao/vanta -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 </head>
 <body>
+  <!-- 背景用のラッパー -->
+  <div id="vanta-bg"></div>
+
   <!-- ヘッダー -->
   <header class="header">
-    <h1>ScrollStory</h1>
-    <p>横からスライドするタイムライン</p>
+    <h1>Dial Timeline</h1>
+    <p>昔のダイヤルのように、くるくる回るモダンタイムライン</p>
   </header>
 
-  <!-- タイムラインコンテンツ -->
-  <main>
-    <section class="timeline">
-      <!-- タイムライン項目1 -->
-      <div class="timeline-item">
-        <div class="timeline-image">
-          <!-- sample.webp を使用 -->
-          <img src="img/sample.webp" alt="Timeline 1" />
-        </div>
-        <div class="timeline-content">
-          <h2>2010年 - はじまり</h2>
-          <p>
-            小学生の頃にプログラミングに興味を持ったきっかけや、当時のエピソードなど。
-          </p>
-        </div>
+  <!-- メインコンテンツ -->
+  <main class="dial-timeline">
+    <!-- タイムライン項目1 -->
+    <div class="dial-item">
+      <div class="dial-circle">
+        <img src="img/sample.webp" alt="サンプル1">
       </div>
+      <div class="dial-content">
+        <h2>2010年 - はじまり</h2>
+        <p>
+          ここに内容を記載。<br>
+          例：プログラミングやデザインに興味を持ったきっかけなど。
+        </p>
+      </div>
+    </div>
 
-      <!-- タイムライン項目2 -->
-      <div class="timeline-item">
-        <div class="timeline-image">
-          <img src="img/sample.webp" alt="Timeline 2" />
-        </div>
-        <div class="timeline-content">
-          <h2>2015年 - 大学入学</h2>
-          <p>
-            大学での専攻やクラブ活動、学んだことや趣味・サークルでの活動など。
-          </p>
-        </div>
+    <!-- タイムライン項目2 -->
+    <div class="dial-item">
+      <div class="dial-circle">
+        <img src="img/sample.webp" alt="サンプル2">
       </div>
+      <div class="dial-content">
+        <h2>2015年 - 大学入学</h2>
+        <p>
+          ここに内容を記載。<br>
+          例：専攻やクラブ活動、学んだことや挑戦したこと。
+        </p>
+      </div>
+    </div>
 
-      <!-- タイムライン項目3 -->
-      <div class="timeline-item">
-        <div class="timeline-image">
-          <img src="img/sample.webp" alt="Timeline 3" />
-        </div>
-        <div class="timeline-content">
-          <h2>2018年 - インターン</h2>
-          <p>
-            企業でのインターンシップで学んだ技術や実務経験のエピソードを紹介。
-          </p>
-        </div>
+    <!-- タイムライン項目3 -->
+    <div class="dial-item">
+      <div class="dial-circle">
+        <img src="img/sample.webp" alt="サンプル3">
       </div>
+      <div class="dial-content">
+        <h2>2018年 - インターン</h2>
+        <p>
+          ここに内容を記載。<br>
+          例：初めての実務経験やそこで得た気づき、成長など。
+        </p>
+      </div>
+    </div>
 
-      <!-- タイムライン項目4 -->
-      <div class="timeline-item">
-        <div class="timeline-image">
-          <img src="img/sample.webp" alt="Timeline 4" />
-        </div>
-        <div class="timeline-content">
-          <h2>2019年 - 個人プロジェクト</h2>
-          <p>
-            自分の興味分野に取り組み始めた話。具体的なプロジェクトの内容など。
-          </p>
-        </div>
+    <!-- タイムライン項目4 -->
+    <div class="dial-item">
+      <div class="dial-circle">
+        <img src="img/sample.webp" alt="サンプル4">
       </div>
+      <div class="dial-content">
+        <h2>2019年 - 個人プロジェクト</h2>
+        <p>
+          ここに内容を記載。<br>
+          例：趣味や興味を活かしたプロジェクトの概要、苦労した点など。
+        </p>
+      </div>
+    </div>
 
-      <!-- タイムライン項目5 -->
-      <div class="timeline-item">
-        <div class="timeline-image">
-          <img src="img/sample.webp" alt="Timeline 5" />
-        </div>
-        <div class="timeline-content">
-          <h2>2021年 - 就職</h2>
-          <p>
-            就職先の業界や役割、現在取り組んでいる業務やスキルアップについて。
-          </p>
-        </div>
+    <!-- タイムライン項目5 -->
+    <div class="dial-item">
+      <div class="dial-circle">
+        <img src="img/sample.webp" alt="サンプル5">
       </div>
+      <div class="dial-content">
+        <h2>2021年 - 就職</h2>
+        <p>
+          ここに内容を記載。<br>
+          例：就職先での役割、スキルアップや目標など。
+        </p>
+      </div>
+    </div>
 
-      <!-- タイムライン項目6 -->
-      <div class="timeline-item">
-        <div class="timeline-image">
-          <img src="img/sample.webp" alt="Timeline 6" />
-        </div>
-        <div class="timeline-content">
-          <h2>2023年 - 現在</h2>
-          <p>
-            現在の活動状況や、今後の目標、挑戦してみたいことなど。
-          </p>
-        </div>
+    <!-- タイムライン項目6 -->
+    <div class="dial-item">
+      <div class="dial-circle">
+        <img src="img/sample.webp" alt="サンプル6">
       </div>
-    </section>
+      <div class="dial-content">
+        <h2>2023年 - 現在</h2>
+        <p>
+          ここに内容を記載。<br>
+          例：現在の活動状況や、今後挑戦していきたいことなど。
+        </p>
+      </div>
+    </div>
   </main>
 
   <!-- フッター -->
   <footer class="footer">
-    <p>&copy; 2025 ScrollStory. All rights reserved.</p>
+    <p>&copy; 2025 Dial Timeline. All rights reserved.</p>
   </footer>
 
   <!-- カスタムJS -->
-  <script src="js/timeline.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
